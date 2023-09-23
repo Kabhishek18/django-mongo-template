@@ -1,0 +1,61 @@
+[
+    
+    {
+        "collection_name" : "groups", 
+        "schema" : {
+            "type": "object",
+            "properties": {
+                "_id": {"bsonType": "objectId"},
+                "name": {"type": "string"},
+                "description": {"type": "string"},
+                "members": {"bsonType": "array"},
+                "createdAt": {"bsonType": "date"},
+                "updatedAt": {"bsonType": "date"}
+            },
+            "required": ["name", "description", "members", "createdAt", "updatedAt"]
+        }
+    },
+    {
+        "collection_name": "posts",
+        "schema": {
+            "type": "object",
+            "properties": {
+                "content": {"type": "string"},
+                "author": {"bsonType": "objectId"},
+                "group": {"bsonType": "objectId"},
+                "created_at": {"bsonType": "date"},
+                "updated_at": {"bsonType": "date"}
+            },
+            "required": ["content", "author", "group", "created_at", "updated_at"]
+        }
+    },
+    {
+        "collection_name": "comments",
+        "schema": {
+            "type": "object",
+            "properties": {
+                "text": {"type": "string"},
+                "author": {"bsonType": "objectId"},
+                "post": {"bsonType": "objectId"},
+                "created_at": {"bsonType": "date"},
+                "updated_at": {"bsonType": "date"}
+            },
+            "required": ["text", "author", "post", "created_at", "updated_at"]
+        }
+    },
+    {
+        "collection_name": "likes",
+        "schema": {
+            "type": "object",
+            "properties": {
+                "user": {"bsonType": "objectId"},
+                "post": {"bsonType": "objectId"}
+            },
+            "required": ["user", "post"]
+        }
+    }
+
+
+    
+    
+]

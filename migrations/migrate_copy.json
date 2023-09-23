@@ -1,0 +1,117 @@
+[
+    {   "collection_name" : "user", 
+        "schema" : {
+            "bsonType": "object",
+            "properties": {
+                "_id": {"bsonType": "objectId"},
+                "username": {"type": "string"},
+                "email": {"type": "string"},
+                "password": {"type": "string"},
+                "firstName": {"type": "string"},
+                "lastName": {"type": "string"},
+                "dob": {"bsonType": "date"},
+                "roles": {"type": "string"},
+                "active": {"bsonType": "array"},
+                "createdBy":{"bsonType": "objectId"},
+                "createdAt": {"bsonType": "date"},
+                "updatedAt": {"bsonType": "date"}
+            },
+            "required": ["username", "email","firstName","lastName","dob","active", "createdAt", "updatedAt"]
+          }
+    },
+    {
+        "collection_name" : "groups_category", 
+        "schema" : {
+            "bsonType": "object",
+            "properties": {
+                "_id": {"bsonType": "objectId"},
+                "name": {"type": "string"},
+                "createdBy":{"bsonType": "objectId"},
+                "createdAt": {"bsonType": "date"},
+                "updatedAt": {"bsonType": "date"}
+            },
+            "required": ["name", "createdBy", "createdAt", "updatedAt"]
+        }
+    },
+    {
+        "collection_name": "groups_collection",
+        "schema": {
+            "bsonType": "object",
+            "properties": {
+                "_id": {"bsonType": "objectId"},
+                "group_name": {"bsonType": "string"},
+                "public_or_private": {"bsonType": "string"},
+                "about": {"bsonType": "string"},
+                "created_by": {
+                    "bsonType": "object",
+                    "properties": {
+                        "admin_moderator_id": {"bsonType": "objectId"}
+                    },
+                    "required": ["admin_moderator_id"]
+                },
+                "group_rules": {"bsonType": "string"},
+                "description": {"bsonType": "string"},
+                "group_category": {"bsonType": "objectId"},
+                "company": {"bsonType": "array", "items": {"bsonType": "objectId"}},
+                "featured": {"bsonType": "bool"},
+                "banner_url": {"bsonType": "string"},
+                "icon_url": {"bsonType": "string"},
+                "created_at": {"bsonType": "date"},
+                "edited_at": {"bsonType": "date"}
+            },
+            "required": ["group_name", "public_or_private", "created_by", "created_at", "edited_at"]
+        }
+    },
+    {
+        "collection_name": "groups_join_requests",
+        "schema": {
+          "bsonType": "object",
+          "properties": {
+            "_id": {"bsonType": "objectId"},
+            "user_id": {"bsonType": "objectId"},
+            "group_id": {"bsonType": "objectId"},
+            "request_date": {"bsonType": "date"},
+            "status": {"bsonType": "string"},
+            "reason": {"bsonType": "string"},
+            "approval": {
+              "bsonType": "object",
+              "properties": {
+                "$date": {"bsonType": "date"},
+                "approved_by": {"bsonType": "objectId"}
+              },
+              "required": ["$date", "approved_by"]
+            },
+            "updated": {
+              "bsonType": "object",
+              "properties": {
+                "$date": {"bsonType": "date"},
+                "updated_by": {"bsonType": "objectId"}
+              },
+              "required": ["$date", "updated_by"]
+            }
+          },
+          "required": ["user_id", "group_id", "request_date", "status"]
+        }
+    },      
+    {
+        "collection_name": "group_users",
+        "schema":{
+           
+                "bsonType": "object",
+                "properties": {
+                    "_id": {"bsonType": "objectId"},
+                    "user_id": {"bsonType": "objectId"},
+                    "group_id": {"bsonType": "objectId"},
+                    "status": {"bsonType": "string"}, 
+                    "joined_at": {"bsonType": "date"},
+                    "role": {"bsonType": "string"} 
+                },
+                "required": ["user_id", "group_id", "status", "joined_at", "role"]
+            
+        }
+    }
+
+
+    
+    
+]
